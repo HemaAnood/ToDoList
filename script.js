@@ -11,42 +11,42 @@ function addTask() {
     }
 
     // Create a new list item
-    const li = document.createElement("li");
+    const listItem = document.createElement("li");
 
-    // Create task text
-    const span = document.createElement("span");
-    span.textContent = task;
-    span.className = "task-text";
+    // Create the task text
+    const taskText = document.createElement("span");
+    taskText.textContent = task;
+    taskText.className = "task-text";
 
-    // Mark task as completed or not completed
-    span.onclick = function() {
-        li.classList.toggle("completed");
-    };
+    // Toggle task completion status
+    taskText.addEventListener("click", function () {
+        taskText.classList.toggle("completed");
+    });
 
-    // Create delete button
+    // Create the delete button
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
-    deleteButton.className = "delete-btn";
+    deleteButton.className = "delete-button";
 
-    // Delete task
-    deleteButton.onclick = function() {
-        li.remove();
-    };
+    // Remove the task
+    deleteButton.addEventListener("click", function () {
+        listItem.remove();
+    });
 
     // Add elements to the list item
-    li.appendChild(span);
-    li.appendChild(deleteButton);
+    listItem.appendChild(taskText);
+    listItem.appendChild(deleteButton);
 
-    // Add task to the list
-    taskList.appendChild(li);
+    // Display the task in the list
+    taskList.appendChild(listItem);
 
-    // Clear input box
+    // Clear the input field
     taskInput.value = "";
     taskInput.focus();
 }
 
-// Add a task by pressing Enter
-taskInput.addEventListener("keydown", function(event) {
+// Add a task when Enter is pressed
+taskInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         addTask();
     }
